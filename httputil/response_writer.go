@@ -126,6 +126,7 @@ func (wrapper *ResponseWrapper) SupportsProcessing() bool {
 
 	// If content type does not match return values with false
 	contentType := wrapper.getContentType()
+	wrapper.logWriter.LogDebugf("debug response Headers: %v", wrapper.ResponseWriter.Header())
 	for _, monitoredType := range wrapper.monitoring.Types {
 		if strings.Contains(contentType, monitoredType) {
 			foundContentType = true
